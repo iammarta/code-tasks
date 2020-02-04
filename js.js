@@ -1097,4 +1097,14 @@ let obj = {
 }
 Найдите сумму элементов приведенного объекта.
 
+let sum = 0;
+for(let key in obj){
+let subObj = obj[key];
+   for(let subKey in subObj){
+sum+=subObj[subKey];
+   }
+}
 
+console.log(sum);
+---------------------------------------------------------------
+	

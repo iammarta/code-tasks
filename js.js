@@ -1124,3 +1124,212 @@ i++;
 }
 let result = func(125);
 console.log(result);
+---------------------------------------------------------------
+Преобразуйте последнюю букву строки в верхний регистр.
+
+let str = 'london';
+let res = str.slice(0,-1) + str.slice(-1).toUpperCase();
+---------------------------------------------------------------
+Преобразуйте первые 2 буквы строки в верхний регистр.
+let res = str.substr(0,2).toUpperCase() + str.substr(2);
+---------------------------------------------------------------
+Пусть у нас есть некоторая переменная с текстом, состоящим из нескольких слов:
+
+let str = 'word1 word2 word3';
+Давайте напишем код, который преобразует первую букву каждого слова в верхний регистр.
+let str = 'word1 word2 word3';
+let arr = str.split(' ');
+for(let i=0; i<arr.length; i++){
+arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substr(1);
+}
+let res = arr.join(' ');
+console.log(res);
+---------------------------------------------------------------
+Преобразуйте строку 'var_test_text' в 'VarTestText'.
+
+Написанный код должен работать для любых строк такого типа (то есть для строк, в которых слова разделены символов подчеркивания)
+
+let str = 'var_test_text';
+let arr = str.split('_');
+for(let i =0; i<arr.length; i++){
+arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substr(1);	
+}
+let res = arr.join('');
+console.log(res);
+---------------------------------------------------------------
+let str = 12345;
+Давайте перевернем символы в обратном порядке:
+
+let res = String(str).split('').reverse().join('');
+console.log(res);
+---------------------------------------------------------------
+Дан массив [1, 2, 3, 4, 5]. С помощью метода slice запишите в новый элементы [1, 2, 3].
+
+let arr = [1, 2, 3, 4, 5];
+let res = arr.slice(0,3);
+console.log(res);
+---------------------------------------------------------------
+Дан массив с числами. Проверьте, есть ли в этом массиве число 3.
+
+let arr = [1,2,4,4,3,5];
+if(arr.indexOf(3) !== -1){
+console.log('number 3 in array');
+}else{
+console.log('there is no number 3');
+}
+---------------------------------------------------------------
+Сделайте функцию getDigitsSum (digit - это цифра), которая параметром будет принимать целое число и возвращать сумму его цифр.
+function getDigitsSum(num){
+let sum = 0;
+for(let elem of String(num)){
+sum+= +elem;
+}
+return sum;
+}
+
+let res = getDigitsSum(123);
+---------------------------------------------------------------
+Реализуйте функцию getDivisors, которая параметром будет принимать число и возвращать массив его делителей, то есть чисел, на которое делится наше число. К примеру, если мы передадим число 24 - мы должны получить массив [1, 2, 3, 4, 6, 12, 24].
+function getDivisors(num){
+let arr = [];
+for(let i = 1; i<=num; i++){
+if(num%i==0){
+arr.push(i);	
+}
+}
+return console.log(arr);
+}
+
+getDivisors(24);
+---------------------------------------------------------------
+Сделайте функцию reverseStr, которая параметром будет принимать строку и переворачивать ее символы в обратном порядке. Решите задачу без цикла, используя комбинацию стандартных функций JavaScript.
+console.log(reverseStr('Marta'));
+function reverseStr(str){
+return str.split('').reverse().join('');
+}
+---------------------------------------------------------------
+Сделайте функцию delElem, которая параметрами будет принимать значение и массив и удалять из массива все элементы с таким значением.
+function delElem(a, arr){
+for(let i = 0; i<arr.length; i++){
+if(arr[i]==a){
+delete arr[i];
+}
+}
+return arr;
+}
+console.log(delElem (2, [1,2,3,4,2,5,2]));
+---------------------------------------------------------------
+Сделайте функцию, заполняющую массив целыми числами от 1 до заданного.
+
+Пример работы такой функции:
+
+console.log(func(5)); // выведет [1, 2, 3, 4, 5]
+
+function func(num){
+let arr = [];
+for(let i=1; i<=num;i++){
+arr.push(i);
+}
+	return arr;
+}
+console.log(func(5));
+---------------------------------------------------------------
+Сделайте функцию, которая параметром будет принимать массив с числами, и проверять, что все элементы в этом массиве являются четными числами.
+
+function func(arr){
+for(let elem of arr){
+if(elem % 2 == 0){
+return true;
+}else{
+return false;	
+}	
+}
+}
+---------------------------------------------------------------
+Дана функция, проверяющая числа на простоту:
+
+function isPrime(num) {
+	for (let i = 2; i < num; i++) {
+		if (num % i == 0) {
+			return false;
+		}
+	}
+	
+	return true;
+}
+С помощью приведенной функции найдите все простые числа в интервале от 1 до 100.
+
+for(let num=1 ; num<=100;num++){
+if(isPrime(num)){
+console.log(num);
+}
+}
+function isPrime(num) {
+	for (let i = 2; i < num; i++) {
+		if (num % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+---------------------------------------------------------------
+Дана функция getDigitsSum, которая параметром принимает целое число и возвращает сумму его цифр:
+
+function getDigitsSum(num) {
+	let sum = 0;
+	let digits = String(num).split('');
+	
+	for (let digit of digits) {
+		sum += Number(digit);
+	}
+	
+	return sum;
+}
+С помощью приведенной функции getDigitsSum найдите все года от 1 до 2030, сумма цифр которых равна 13.
+
+for(num = 0; num < 2030; num++){
+if(getDigitsSum(num)==13){
+console.log(num);
+}
+}
+function getDigitsSum(num) {
+	let sum = 0;
+	let digits = String(num).split('');
+	
+	for (let digit of digits) {
+		sum += Number(digit);
+	}
+	
+	return sum;
+}
+---------------------------------------------------------------
+Пусть дан какой-то массив с числами, например, такой:
+
+[123, 456, 789]
+Давайте сделаем так, чтобы цифры в каждом элементе массива были в обратном порядке. То есть из нашего массива сделаем следующий:
+
+[321, 654, 987]
+Некий программист уже написал код, реализующий описанную задачу:
+
+let nums = [123, 456, 789];
+
+let result = [];
+for (let num of nums) {
+	result.push(String(num).split('').reverse().join(''));
+}
+
+console.log(result); // выведет [321, 654, 987]
+Переделайте приведенный код так, чтобы переворот числа выполняла отдельная функция.
+
+let nums = [123, 456, 789];
+
+let result = [];
+for(let num of nums){
+if(typeof(reverseArray(num)) =='string'){
+console.log(result.push(num));
+}
+}
+function reverseArray(num){
+return String(num).split('').reverse().join(''));
+}
+

@@ -1332,4 +1332,135 @@ console.log(result.push(num));
 function reverseArray(num){
 return String(num).split('').reverse().join(''));
 }
+---------------------------------------------------------------
+Дан массив со строками. С помощью созданной нами функции each переверните символы каждой строки в обратном порядке.
+function each(arr, callback) {
+	let narr = [];
+	
+	for (let elem of arr) {
+		narr.push( callback(elem) ); 
+	}
+	
+	return narr;
+}
 
+let result = each(['hello', 'world', '!?'], (str) => str.split('').reverse().join(''););
+
+console.log(result);
+---------------------------------------------------------------
+Дан массив со строками. С помощью созданной нами функции each сделайте заглавным первый символ каждой строки.
+function each(arr, callback){
+let narr = [];
+for(let elem of arr){
+narr.push(callback(elem));	
+}
+return narr;
+}
+let result = each(['hello', 'bye'], (str) => str.charAt(0).toUpperCase() + str.substr(1));
+console.log(result);
+---------------------------------------------------------------
+Дан массив с числами. С помощью созданной нами функции each найдите произведение каждого элемента массива на его порядковый номер.
+
+function each(arr, callback){
+let narr = [];
+	let i = 0;
+for(let elem of arr){	
+narr.push(callback(elem, i++))	
+}
+return narr;
+}
+let result = each([1,2,3], (num,index) => num *index);
+console.log(result);
+---------------------------------------------------------------
+Реализуйте функцию filter, которая будет осуществлять фильтрацию массива. Пусть первым параметром функция принимает массив, а вторым - функцию-коллбэк, и возвращает массив элементов, для которых функция-коллбэк вернет true.
+
+Пример работы такой функции (оставим в массиве только четные числа):
+
+let result = filter([1, 2, 3, 4, 5], function(elem) {
+	if (elem % 2 == 0) {
+		return true;
+	} else {
+		return false;
+	}
+});
+
+console.log(result); // выведет [2, 4]
+
+Пусть в первый параметр коллбэка попадает элемент массива, а во второй - его номер.
+function filter(arr, callback){
+let narr = [];
+for(let elem of arr){
+if(callback(elem)==true){
+narr.push(elem);
+}
+}
+return narr;
+}
+
+let result = filter([1, 2, 3, 4, 5], (elem, index) =>{
+	if (elem % 2 == 0) {
+		return true;
+	} else {
+		return false;
+	}
+});
+
+console.log(result);
+---------------------------------------------------------------
+Дан массив со строками. С помощью созданной нами функции filter оставьте в этом массиве только строки, длина которых от 1 до 3 символов.
+
+let result = filter(['hello', 'bye', '', 't'], function(elem){
+if(elem.length >= 1 && elem.length <=3){
+return true;	
+}else{
+return false;	
+}
+});
+
+console.log(result);
+
+function filter(arr, callback){
+let narr = [];
+for(let elem of arr){
+if(callback(elem) == true){
+narr.push(elem);
+}
+}
+return narr;	
+}
+---------------------------------------------------------------
+Реализуйте функцию alternate, которая первым параметром будет принимать массив, а вторым и третьим - коллбэки.
+
+Функция должна по очереди применять коллбэки к элементам массива. То есть: для первого элемента - первый коллбэк, для второго элемента - второй коллбэк, для третьего - опять первый коллбэк и так далее пока элементы массива не закончатся.
+
+let result = alternate(
+	['a', 'b', 'c', 'd', 'e'],
+	function(elem) {
+		return elem + '!';
+	},
+	function(elem) {
+		return elem + '?';
+	},
+);
+
+console.log(result); 
+
+function alternate(arr, callback1, callback2){
+	let narr = [];
+	for(let i = 0; i< arr.length; i++){
+narr.push(callback1(arr[i]), callback2(arr[i]));
+	}
+return narr;
+}
+---------------------------------------------------------------
+Сделайте функцию, которая с помощью рекурсии выведет первые 10 чисел Фибоначчи. Числа Фибоначчи строятся следующим образом: каждое новое число равно сумме двух предыдущих. Первые два числа Фибоначчи - это 1 и 2. Следующее число будет равно 1 + 2 = 3, следующее число будет равно 2 + 3 = 5 и так далее.
+
+function func(prevPrevNum, prevNum){
+	let t = prevPrevNum + prevNum;
+	for(let i = 1; i <= 10; i++){
+	t += func(prevPrevNum,prevNum);
+	}
+	return t;
+}
+
+func(1, 2); 

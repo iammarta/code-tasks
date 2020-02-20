@@ -1586,7 +1586,11 @@ let arr = [
 ];
 
 let narr = [];
-
-arr.map(function(elem){
-narr.push(Number(elem.split(' ')));
-});
+function func(arr){
+for(let elem of arr){
+let t = elem.split('').map(Number);
+narr.push(t);
+}
+return narr;
+}
+func(['123', '456', '789']);

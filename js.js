@@ -1669,3 +1669,37 @@ console.log(arr.some(elem => elem>0));
 let arr = [2, 4, 6, 8];
 
 console.log(arr.some((elem,index) => elem*index > 30 ));
+---------------------------------------------------------------
+Дана строка; нужно написать функцию, которая позволяет вернуть значение true, если строка является палиндромом, и false — если нет. При этом нужно учитывать пробелы и знаки препинания.
+function palindrome(str){
+let strPal = str.split('').reverse().join('');
+if(str.toLowerCase() === strPal.toLowerCase){
+return true;
+}else{
+return false;
+}	
+}
+
+palindrome('Anna');
+---------------------------------------------------------------
+Требуется написать функцию, выводящую в консоль числа от 1 до n, где n — это целое число, которая функция принимает в качестве параметра, с такими условиями:
+
+вывод fizz вместо чисел, кратных 3;
+вывод buzz вместо чисел, кратных 5;
+вывод fizzbuzz вместо чисел, кратных как 3, так и 5.
+
+function fizzbuzz(n){
+for(let i = 1; i <= n; i++){
+if(i % 3 == 0 && i % 5 == 0){
+console.log('FizzBuzz');
+}else if(i % 5 == 0){
+console.log('Buzz');
+}else if(i % 3 == 0 ){
+console.log('Fizz');
+}else{
+console.log(i);
+}
+}
+}
+console.log(fizzbuzz(50));
+---------------------------------------------------------------

@@ -1703,3 +1703,31 @@ console.log(i);
 }
 console.log(fizzbuzz(50));
 ---------------------------------------------------------------
+Нужно написать функцию, которая проверяет, являются ли две строки анаграммами, причем регистр букв не имеет значения. Учитываются лишь символы; пробелы или знаки препинания в расчет не берутся.
+
+function anagram(str1, str2){
+str1 = str1.toLowerCase().split('').sort().join('');
+str2 = str2.toLowerCase().split('').sort().join('');
+
+if(str1 === str2){
+return true;
+}else{
+return false;
+}
+}
+anagram('finder', 'Friend');
+---------------------------------------------------------------
+Нужно написать функцию, принимающую строку в качестве аргумента и возвращающую количество гласных, которые содержатся в строке.
+
+function func(str){
+str = str.toLowerCase();
+ let count = 0;
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+  for(let elem of str) {
+    if(vowels.includes(elem)) {
+      count++;
+    }
+  }
+  return count;
+}
+func('hello');
